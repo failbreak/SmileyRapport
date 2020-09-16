@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SMiley_rapport_2._0
+namespace SmileyRapport_Csharp
 {
     public class ClusterFuck
     {

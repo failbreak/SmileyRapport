@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SmileyRapport_Csharp
 {
-    class Program
+   class Program
     {
         static void Main(string[] args)
         {
@@ -19,7 +19,10 @@ namespace SmileyRapport_Csharp
             // valg
 
             int brugerensValg;
-            var poopKun = new ClusterFuck();
+            var MetodeBrug = new ClusterFuck("Super Tilfreds");
+            var MetodeBrug2 = new ClusterFuck("Tilfreds");
+            var MetodeBrug3 = new ClusterFuck("Ikke Tilfreds");
+            var MetodeBrug4 = new ClusterFuck("Virklig Utilfreds");
             while (true)
             {
                 Console.WriteLine(" Vi hos elgiganten elsker feedback");
@@ -39,27 +42,29 @@ namespace SmileyRapport_Csharp
                         Console.Write("Du har valgt ");
                         Console.WriteLine("Super tilfreds", Console.ForegroundColor = ConsoleColor.DarkGreen);
                         Console.ResetColor();
-                        poopKun.RatingOthersBeHating(0);
-                        poopKun.ToSaveThemIsMyCause();
+                        MetodeBrug.Rating();
                         break;
                     case 2:
-                        Console.WriteLine("Du har valgt tilfreds", Console.ForegroundColor = ConsoleColor.Green);
+                        Console.WriteLine("Du har valgt");
+                        Console.WriteLine(" tilfreds", Console.ForegroundColor = ConsoleColor.Green);
                         Console.ResetColor();
-                        poopKun.RatingOthersBeHating(1);
-                        poopKun.ToSaveThemIsMyCause();
+                        MetodeBrug2.Rating();
+
                         break;
                     case 3:
-                        Console.WriteLine("Du har valgt ikke tilfreds", Console.ForegroundColor = ConsoleColor.Red);
+                        Console.WriteLine("Du har valgt");
+                        Console.WriteLine("ikke tilfreds", Console.ForegroundColor = ConsoleColor.Red);
                         Console.ResetColor();
-                        poopKun.RatingOthersBeHating(2);
-                        poopKun.ToSaveThemIsMyCause();
+                        MetodeBrug3.Rating();
+
                         break;
 
                     case 4:
-                        Console.WriteLine("Du har valgt virkelig utilfreds", Console.ForegroundColor = ConsoleColor.DarkRed);
+                        Console.WriteLine("Du har valgt");
+                        Console.WriteLine("virkelig utilfreds", Console.ForegroundColor = ConsoleColor.DarkRed);
                         Console.ResetColor();
-                        poopKun.RatingOthersBeHating(3);
-                        poopKun.ToSaveThemIsMyCause();
+                        MetodeBrug4.Rating();
+
                         break;
 
                     case 99:
@@ -74,9 +79,80 @@ namespace SmileyRapport_Csharp
 
                             if (kode == Akode)
                             {
+                                int aaValg;
                                 Console.WriteLine("velkomen til admin");
+                                Console.WriteLine("1: tilføj tilfredshed med 100");
+                                Console.WriteLine("2: xi jinping mode");
+                                aaValg = Convert.ToInt32(Console.ReadLine());
 
+                                switch (aaValg)
+                                {
+                                    case 1:
+                                        var randoms = new Random();
+                                        for (int g = 0; g < 100; g++)
+                                        {
+                                            switch (randoms.Next(4))
+                                            {
+                                                case 0:
 
+                                                    MetodeBrug.Rating();
+
+                                                    break;
+
+                                                case 1:
+
+                                                    MetodeBrug2.Rating();
+
+                                                    break;
+                                                case 2:
+
+                                                    MetodeBrug3.Rating();
+
+                                                    break;
+                                                case 3:
+
+                                                    MetodeBrug4.Rating();
+
+                                                    break;
+                                                
+                                            }
+                                        }
+                                        break;
+
+                                    case 2:
+                                        int holdn;
+                                        Console.WriteLine("slet nogle holdnigner");
+                                        Console.WriteLine("1: Super Tilfreds");
+                                        Console.WriteLine("2: Tilfreds");
+                                        Console.WriteLine("3: ikke Tilfreds");
+                                        Console.WriteLine("4: Virklig Utilfreds");
+
+                                        holdn = Convert.ToInt32(Console.ReadLine());
+
+                                        switch (holdn)
+                                        {
+
+                                            case 1:
+                                                MetodeBrug.NoCredit();
+                                                break;
+                                            case 2:
+                                                MetodeBrug2.NoCredit();
+                                                break;
+                                            case 3:
+                                                MetodeBrug3.NoCredit();
+                                                break;
+                                            case 4:
+                                                MetodeBrug4.NoCredit();
+                                                break;
+
+                                            default:
+                                                break;
+                                        }
+
+                                        break;
+                                    default:
+                                        break;
+                                }
                                 break;
                             }
 
@@ -91,11 +167,23 @@ namespace SmileyRapport_Csharp
                         break;
 
                 }
-                poopKun.InterspeciesValudering();
-                System.Threading.Thread.Sleep(10000);
+                stat(new ClusterFuck[] { MetodeBrug, MetodeBrug2, MetodeBrug3, MetodeBrug4 });
+                System.Threading.Thread.Sleep(1000);
                 Console.Clear();
             }
-
+            void stat(ClusterFuck[] JustLikeDarkSouls)
+            {
+                int Stil = JustLikeDarkSouls[0].Valudering();
+                int Til = JustLikeDarkSouls[1].Valudering();
+                int Itil = JustLikeDarkSouls[2].Valudering();
+                int Util = JustLikeDarkSouls[3].Valudering();
+                float count = Stil + Til + Itil + Util;
+                Console.WriteLine($"Super Tilfreds {Stil / count } ");
+                Console.WriteLine($"Tilfreds {Til / count } ");
+                Console.WriteLine($"ikke Tilfreds {Itil / count } ");
+                Console.WriteLine($"Virklig utilfreds {Util / count } ");
+                
+            }
         }
 
     }
